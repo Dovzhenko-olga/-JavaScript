@@ -1,3 +1,7 @@
+.start {
+  cursor: pointer;
+}
+
 .hide {
   display: none;
 }
