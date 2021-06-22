@@ -1,0 +1,9 @@
+.hide {
+  display: none;
+}
+
+.car {
+  width: 100px;
+  height: 60px;
+  background: transparent url(./image/ford.png) center / cover no-repeat;
+}
