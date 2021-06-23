@@ -6,8 +6,30 @@
   display: none;
 }
 
-.car {
-  width: 100px;
-  height: 60px;
-  background: transparent url(./image/ford.png) center / cover no-repeat;
+.car,
+.enemy {
+  width: 50px;
+  height: 100px;
+  background: transparent url(./image/player.png) center / cover no-repeat;
+  position: absolute;
+  left: 125px;
+  bottom: 10px;
+  /* transform: scale(-1, 1); */
+}
+
+.gameArea {
+  width: 300px;
+  height: 100%;
+  position: relative;
+  margin: auto;
+  background: #222;
+  overflow: hidden;
+}
+
+.line {
+  position: absolute;
+  width: 10px;
+  height: 50px;
+  background: #fff;
+  left: 145px;
 }
