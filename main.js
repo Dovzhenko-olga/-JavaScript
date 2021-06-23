@@ -33,7 +33,7 @@ function startGame() {
   for (let i = 0; i < getQuantitylements(100); i++) {
     const line = document.createElement('div');
     line.classList.add('line');
-    line.style.top = (i * 100) + 'px';
+    line.style.top = (i * 100) +'px';
     line.y = i * 100;
     gameArea.appendChild(line);
   }
@@ -42,7 +42,7 @@ function startGame() {
     const enemy = document.createElement('div');
     enemy.classList.add('enemy');
     enemy.y = -100 * setting.traffic * (i + 1);
-    enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
+    enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) +'px';
     enemy.style.top = enemy.y + 'px';
     enemy.style.background = 'transparent url(./image/enemy.png) center / cover no-repeat';
     gameArea.appendChild(enemy);
@@ -59,16 +59,16 @@ function playGame() {
   if (setting.start) {
     moveRoad();
     moveEnemy();
-    if (keys.ArrowLeft && setting.x > 0) {
+    if(keys.ArrowLeft && setting.x > 0){
       setting.x -= setting.speed;
     }
-    if (keys.ArrowRight && setting.x < (gameArea.offsetWidth - car.offsetWidth)) {
+    if(keys.ArrowRight && setting.x < (gameArea.offsetWidth -  car.offsetWidth)){
       setting.x += setting.speed;
     }
-    if (keys.ArrowUp && setting.y > 0) {
+    if(keys.ArrowUp && setting.y > 0){
       setting.y -= setting.speed;
     }
-    if (keys.ArrowDown && setting.y < (gameArea.offsetHeight - car.offsetHeight)) {
+    if(keys.ArrowDown && setting.y < (gameArea.offsetHeight -  car.offsetHeight)){
       setting.y += setting.speed;
     }
 
@@ -95,21 +95,23 @@ function moveRoad() {
     line.y += setting.speed;
     line.style.top = line.y + 'px';
 
-    if (line.y > document.documentElement.clientHeight) {
+    if (line.y >= document.documentElement.clientHeight) {
       line.y = -100;
     }
+
   });
 }
 
 function moveEnemy() {
-  let enemies = document.querySelectorAll('.enemy');
-  enemies.forEach(function (item) {
+  let enemy = document.querySelectorAll('.enemy');
+  enemy.forEach(function (item) {
     item.y += setting.speed / 2;
     item.style.top = item.y + 'px';
-    if (item.y > document.documentElement.clientHeight) {
+
+    if (item.y >= document.documentElement.clientHeight) {
       item.y = -100 * setting.traffic;
       item.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) + 'px';
     }
-  });
 
+  });
 } 
