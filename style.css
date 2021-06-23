@@ -1,4 +1,7 @@
 .start {
+  margin-top: 25px;
+  margin-left: 15px;
+  padding: 5px;
   cursor: pointer;
 }
 
