@@ -1,7 +1,16 @@
+const MAX_ENEMY = 7;
+
 const score = document.querySelector('.score'),
   start = document.querySelector('.start'),
   gameArea = document.querySelector('.gameArea'),
   car = document.createElement('div');
+
+// const music = document.createElement('embed');
+
+// music.src = 'audio.mp3';
+// music.classList.add('visually-hidden');
+
+const music = new Audio('audio.mp3');
 
 car.classList.add('car');
 
@@ -15,8 +24,8 @@ const keys = {
 const setting = {
   start: false,
   score: 0,
-  speed: 3,
-  traffic: 3
+  speed: 5,
+  traffic: 2.5
 };
 
 start.addEventListener('click', startGame);
@@ -28,6 +37,16 @@ function getQuantitylements(heightElement) {
 }
 
 function startGame() {
+
+  music.play();
+
+  // document.body.append(music);
+
+  // setTimeout(() => {
+  //   music.remove();
+  // }, 3000);
+
+  gameArea.style.height = 100 + '%';
   start.classList.add('hide');
 
   for (let i = 0; i < getQuantitylements(100); i++) {
@@ -38,13 +57,19 @@ function startGame() {
     gameArea.appendChild(line);
   }
 
+  const getRandomEnemy = (max) => Math.floor((Math.random() * max) + 1);
+
   for (let i = 0; i < getQuantitylements(100 * setting.traffic); i++) {
     const enemy = document.createElement('div');
     enemy.classList.add('enemy');
     enemy.y = -100 * setting.traffic * (i + 1);
     enemy.style.left = Math.floor(Math.random() * (gameArea.offsetWidth - 50)) +'px';
     enemy.style.top = enemy.y + 'px';
-    enemy.style.background = 'transparent url(./image/enemy.png) center / cover no-repeat';
+    enemy.style.background = `
+      transparent
+      url(./image/enemy${getRandomEnemy(MAX_ENEMY)}.png)
+      center / cover
+      no-repeat`;
     gameArea.appendChild(enemy);
   }
 
@@ -80,13 +105,17 @@ function playGame() {
 }
 
 function startRun(e) {
+  if (keys.hasOwnProperty(e.key)) {
   e.preventDefault();
   keys[e.key] = true;
+  }
 }
 
 function stopRun(e) {
-  e.preventDefault();
-  keys[e.key] = false;
+  if (keys.hasOwnProperty(e.key)) {
+    e.preventDefault();
+    keys[e.key] = false;
+  }
 }
 
 function moveRoad() {
@@ -115,3 +144,5 @@ function moveEnemy() {
 
   });
 } 
+
+// const fibo = (n) => n <= 2 ? 1 : fibo(n - 1) + fibo(n -);
