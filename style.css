@@ -1,16 +1,25 @@
 .start {
-  margin-top: 25px;
-  margin-left: 15px;
-  padding: 5px;
-  font-size: 15px;
-  background-color: rgb(122, 219, 171);
-  border-radius: 5px;
+  /* margin-top: 25px;
+  margin-left: 15px; */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 2rem 0;
+  text-align: center;
+  z-index: 3;
+  font-size: 1.5rem;
+  font-family: san-serif;
+  font-weight: 700;
+  color: bisque;
+  background-color: black;
   cursor: pointer;
 }
 
 .start:hover {
-  transform: scale(1.03);
-  background-color: rgb(236, 53, 138);
+  /* transform: scale(1.03); */
+  background-color: rgb(46, 45, 46);
   box-shadow: 3px 2px 12px 2px rgba(236, 53, 138, 0.2);
 }
 .hide {
@@ -23,8 +32,6 @@
   height: 100px;
   background: transparent url(./image/player.png) center / cover no-repeat;
   position: absolute;
-  left: 125px;
-  bottom: 10px;
   /* transform: scale(-1, 1); */
 }
 
@@ -53,4 +60,21 @@
   height: 1px !important;
   width: 1px !important;
   overflow: hidden;
+}
+
+.score {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  margin: 0;
+  padding: 1rem 0;
+  text-align: center;
+  z-index: 3;
+  font-size: 1.5rem;
+  font-family: san-serif;
+  font-weight: 500;
+  color: aquamarine;
+  background-color: black;
+  cursor: pointer;
 }
