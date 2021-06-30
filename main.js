@@ -238,7 +238,7 @@ function toggleVolume() {
     setting.volume = false;
     volume.style.background = `
     transparent
-    url('./image/mute.svg') 
+    url('image/mute.svg') 
     center / cover 
     no-repeat
     `;
@@ -247,7 +247,7 @@ function toggleVolume() {
     setting.volume = true;
     volume.style.background = `
     transparent
-    url('./image/volume.svg') 
+    url('image/volume.svg') 
     center / cover 
     no-repeat
     `;
