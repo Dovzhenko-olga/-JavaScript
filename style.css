@@ -1,29 +1,62 @@
 .start {
   /* margin-top: 25px;
   margin-left: 15px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  /* width: 100%; */
   margin: 0;
-  padding: 2rem 0;
+  padding: 1rem;
   text-align: center;
   z-index: 3;
   font-size: 1.5rem;
   font-family: san-serif;
   font-weight: 700;
-  color: bisque;
-  background-color: black;
+  box-shadow: 5px 5px 11px 3px #bdbdbd52;
+  border: none;
   cursor: pointer;
 }
 
-.start:hover {
-  /* transform: scale(1.03); */
-  background-color: rgb(46, 45, 46);
-  box-shadow: 3px 2px 12px 2px rgba(236, 53, 138, 0.2);
+.btn {
+  font-size: 20px;
+  background-color: bisque;
+  color: black;
+  padding: 5px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  box-shadow: inset 0px 0px 4px 2px #90caf9;
 }
+
+.btn:not(:last-child) {
+  margin-right: 15px;
+}
+
+.btn:hover {
+  background-color: #90caf9;
+  box-shadow: inset 0px 0px 4px 2px bisque;
+  transform: scale(1.03);
+}
+
+.btn:disabled {
+  background-color: #ccc;
+  color: gray;
+}
+
+.start:hover {
+  box-shadow: 3px 2px 12px 2px rgba(153, 152, 152, 0.2);
+}
+
 .hide {
   display: none;
+}
+
+.game {
+  height: 100%;
+  display: flex;
 }
 
 .car,
@@ -35,12 +68,25 @@
   /* transform: scale(-1, 1); */
 }
 
+.road {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
 .gameArea {
   width: 300px;
   position: relative;
   margin: auto;
   background: #222;
   overflow: hidden;
+}
+
+.border {
+  width: 15px;
+  margin: auto;
+  background: gray;
 }
 
 .line {
@@ -64,17 +110,51 @@
 
 .score {
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
+  /* width: 100%; */
   margin: 0;
-  padding: 1rem 0;
+  padding: 1rem;
   text-align: center;
   z-index: 3;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-family: san-serif;
   font-weight: 500;
-  color: aquamarine;
-  background-color: black;
+  color: rgb(2, 57, 175);
+  box-shadow: 9px -8px 12px 2px #bdbdbd52;
+  cursor: pointer;
+}
+
+.score:hover {
+  box-shadow: 2px -3px 12px 2pxrgba (63, 63, 63, 0.2);
+}
+
+.best-score {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15%;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-family: san-serif;
+  font-weight: 700;
+  text-align: center;
+  background-color: bisque;
+  color: black;
+  box-shadow: inset 0px 0px 4px 2px #90caf9, -5px 5px 11px 3px #bdbdbd52;
+}
+
+.congrats {
+  color: rgb(88, 241, 88);
+}
+
+.volume {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  z-index: 201;
+  bottom: 20px;
+  right: 20px;
+  background: transparent url("../image/volume.svg") center / cover no-repeat;
   cursor: pointer;
 }

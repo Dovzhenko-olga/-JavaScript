@@ -7,11 +7,21 @@
 </head>
 
 <body>
-  <div class="score"></div>
+  <div class="volume"></div>
+  <div class="score hide"></div>
   <div class="game">
-    <button class="start">Click to start game!</button>
+    <div class="start">
+      <button class="btn" data-level="1">easy</button>
+      <button class="btn" data-level="2">middle</button>
+      <button class="btn" data-level="3">hard</button>
+      </div>
+    <div class="road">
+    <div class="border"></div>
     <div class="gameArea"></div>
+    <div class="border"></div>
+    </div>
   </div>
+  <div class="best-score"></div>
 
   <script src="main.js"></script>
 
