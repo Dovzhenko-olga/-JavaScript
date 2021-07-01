@@ -8,7 +8,8 @@ const score = document.querySelector('.score'),
   borders = document.querySelectorAll('.border'),
   btns = document.querySelectorAll('.btn'),
   bestScore = document.querySelector('.best-score'),
-  volume = document.querySelector('.volume');
+  volume = document.querySelector('.volume'),
+  crash = document.createElement('audio');
 
 // const music = document.createElement('embed');
 
@@ -20,6 +21,10 @@ music.volume = 0.1;
 
 car.classList.add('car');
 
+crash.autoplay = false;
+crash.src = 'crash.mp3';
+crash.loop = false;
+
 const keys = {
   ArrowUp: false,
   ArrowDown: false,
@@ -30,8 +35,8 @@ const keys = {
 const setting = {
   start: false,
   score: 0,
-  speed: 5,
-  traffic: 3,
+  speed: 4,
+  traffic: 4,
   volume: true,
 };
 
@@ -41,6 +46,15 @@ start.addEventListener('click', startGame);
 document.addEventListener('keydown', startRun);
 document.addEventListener('keyup', stopRun);
 volume.addEventListener('click', toggleVolume);
+document.addEventListener('keydown', rotateLeftDown);
+document.addEventListener('keyup', rotateLeftUp);
+
+function rotateLeftDown() {
+    car.style.transform = 'rotate(0deg)';
+}
+function rotateLeftUp() {
+  car.style.transform = 'rotate(0deg)';
+}
 
 bestScore.innerHTML = `Your record ${showBestRecord()}`;
 
@@ -56,7 +70,7 @@ const changeLevel = (lvl) => {
       break;
     case '3':
       setting.traffic = 3;
-      setting.speed = 8;
+      setting.speed = 7;
       break;
   }
   startSpeed = setting.speed;
@@ -143,9 +157,11 @@ function playGame() {
     moveEnemy();
     if(keys.ArrowLeft && setting.x > 0){
       setting.x -= setting.speed;
+      car.style.transform = 'rotate(-5deg)';
     }
     if(keys.ArrowRight && setting.x < (gameArea.offsetWidth - car.offsetWidth)){
       setting.x += setting.speed;
+      car.style.transform = 'rotate(5deg)';
     }
     if(keys.ArrowUp && setting.y > 0){
       setting.y -= setting.speed;
@@ -202,11 +218,12 @@ function moveEnemy() {
     let carRect = car.getBoundingClientRect();
     let enemyRect = item.getBoundingClientRect();
 
-    if (carRect.top <= enemyRect.bottom
-      && carRect.right >= enemyRect.left
-      && carRect.left <= enemyRect.right
-      && carRect.bottom >= enemyRect.top) {
+    if (carRect.top <= enemyRect.bottom &&
+      carRect.right >= enemyRect.left &&
+      carRect.left <= enemyRect.right &&
+      carRect.bottom >= enemyRect.top) {
       setting.start = false;
+      crash.play();
       // start.classList.remove('hide');
       // start.style.top = score.offsetHeight;
       }
@@ -231,7 +248,7 @@ function showBestRecord() {
     }
 }
 
-// Переключение громкости
+// Выключение громкости
 function toggleVolume() {
   if (setting.volume === true) {
     music.muted = true;
