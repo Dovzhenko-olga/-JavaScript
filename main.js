@@ -38,6 +38,7 @@ const setting = {
   speed: 4,
   traffic: 4,
   volume: true,
+  record: localStorage.getItem('best-record'),
 };
 
 let startSpeed = 0;
@@ -146,10 +147,11 @@ function startGame(e) {
   requestAnimationFrame(playGame);
 }
 
+  // ${setting.record ? `<p>Best record: ${setting.record}</p>` : '' }
 function playGame() {
   if (setting.start) {
     setting.score += setting.speed;
-    score.innerHTML = `SCORE: ${setting.score}`;
+    score.innerHTML = `<p>SCORE: ${setting.score}</p>`;
 
     setting.speed = startSpeed + Math.floor(setting.score / 5000);
     console.log(setting.speed);
@@ -224,6 +226,11 @@ function moveEnemy() {
       carRect.bottom >= enemyRect.top) {
       setting.start = false;
       crash.play();
+      // if (setting.score > setting.record) {
+      //   localStorage.setItem('best-record', setting.score);
+      //   alert(`Yahooo! New record more ${setting.score - setting.record} point!`);
+      //   setting.record = setting.score;
+      // }
       // start.classList.remove('hide');
       // start.style.top = score.offsetHeight;
       }
